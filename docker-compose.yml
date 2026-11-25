@@ -11,7 +11,7 @@ services:
     build: ./backend
     ports: ["8080:8080"]
     environment:
-      DATABASE_URL: ******db:5432/fitness
+      DATABASE_URL: postgres://fitness:fitness@db:5432/fitness
     depends_on: [db]
 volumes:
   pgdata:
