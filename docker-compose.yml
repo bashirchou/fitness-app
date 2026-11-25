@@ -1,0 +1,17 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: fitness
+      POSTGRES_PASSWORD: fitness
+      POSTGRES_DB: fitness
+    ports: ["5432:5432"]
+    volumes: [pgdata:/var/lib/postgresql/data]
+  backend:
+    build: ./backend
+    ports: ["8080:8080"]
+    environment:
+      DATABASE_URL: ******db:5432/fitness
+    depends_on: [db]
+volumes:
+  pgdata:
